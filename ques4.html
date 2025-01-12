@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fruits</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      @media (max-width: 700px) {
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gallery">
+      <div class="photo">
+        <img src="apple.jpg" />
+        <p>Apple</p>
+      </div>
+      <div class="photo">
+        <img src="banana.jpg" />
+        <p>Banana</p>
+      </div>
+      <div class="photo">
+        <img src="mango.jpg" />
+        <p>Mango</p>
+      </div>
+      <div class="photo">
+        <img src="orange.jpg" />
+        <p>Orange</p>
+      </div>
+      <div class="photo">
+        <img src="cherry.jpg" />
+        <p>Cherry</p>
+      </div>
+      <div class="photo">
+        <img src="pear.jpg" />
+        <p>Pear</p>
+      </div>
+    </div>
+  </body>
+</html>
