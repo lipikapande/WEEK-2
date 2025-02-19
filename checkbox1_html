@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1>Form</h1>
+      <div class="jumbotron">
+        <label>Select your favorite fruits:</label><br />
+        <input type="checkbox" name="fruit" value="Apple" /> Apple<br />
+        <input type="checkbox" name="fruit" value="Banana" /> Banana<br />
+        <input type="checkbox" name="fruit" value="Mango" /> Mango<br />
+        <input type="checkbox" name="fruit" value="Orange" /> Orange<br />
+
+        <br />
+        <label><b>Preferred contact method:</b></label
+        ><br />
+        <input type="radio" name="contact" value="Email" /> Email<br />
+        <input type="radio" name="contact" value="Phone" /> Phone<br />
+        <input type="radio" name="contact" value="SMS" /> SMS<br />
+
+        <br />
+        <button type="button" onclick="sub()">Submit</button>
+      </div>
+      <button class="btn btn-info" onclick="sgpa()">Get SGPA</button>
+      <p id="para1"></p>
+      <p id="para2"></p>
+      <p id="para3"></p>
+      <p id="para4"></p>
+      <button class="btn btn-primary" onclick="cgpa()">Get CGPA</button>
+      <p id="para5"></p>
+    </div>
+
+    <p id="para"></p>
+  </body>
+  <script>
+    const sem1s1g = parseFloat(
+      document.getElementById("sem1-sub1-grade").value
+    );
+    const sem1s1c = parseFloat(
+      document.getElementById("sem1-sub1-creds").value
+    );
+    const sem1s2g = parseFloat(
+      document.getElementById("sem1-sub2-grade").value
+    );
+    const sem1s2c = parseFloat(
+      document.getElementById("sem1-sub2-creds").value
+    );
+    const sem1s3g = parseFloat(
+      document.getElementById("sem1-sub3-grade").value
+    );
+    const sem1s3c = parseFloat(
+      document.getElementById("sem1-sub3-creds").value
+    );
+
+    const sem2s1g = parseFloat(
+      document.getElementById("sem2-sub1-grade").value
+    );
+    const sem2s1c = parseFloat(
+      document.getElementById("sem2-sub1-creds").value
+    );
+    const sem2s2g = parseFloat(
+      document.getElementById("sem2-sub2-grade").value
+    );
+    const sem2s2c = parseFloat(
+      document.getElementById("sem2-sub2-creds").value
+    );
+    const sem2s3g = parseFloat(
+      document.getElementById("sem2-sub3-grade").value
+    );
+    const sem2s3c = parseFloat(
+      document.getElementById("sem2-sub3-creds").value
+    );
+
+    const sem3s1g = parseFloat(
+      document.getElementById("sem3-sub1-grade").value
+    );
+    const sem3s1c = parseFloat(
+      document.getElementById("sem3-sub1-creds").value
+    );
+    const sem3s2g = parseFloat(
+      document.getElementById("sem3-sub2-grade").value
+    );
+    const sem3s2c = parseFloat(
+      document.getElementById("sem3-sub2-creds").value
+    );
+    const sem3s3g = parseFloat(
+      document.getElementById("sem3-sub3-grade").value
+    );
+    const sem3s3c = parseFloat(
+      document.getElementById("sem3-sub3-creds").value
+    );
+
+    const sem4s1g = parseFloat(
+      document.getElementById("sem4-sub1-grade").value
+    );
+    const sem4s1c = parseFloat(
+      document.getElementById("sem4-sub1-creds").value
+    );
+    const sem4s2g = parseFloat(
+      document.getElementById("sem4-sub2-grade").value
+    );
+    const sem4s2c = parseFloat(
+      document.getElementById("sem4-sub2-creds").value
+    );
+    const sem4s3g = parseFloat(
+      document.getElementById("sem4-sub3-grade").value
+    );
+    const sem4s3c = parseFloat(
+      document.getElementById("sem4-sub3-creds").value
+    );
+
+    let sgpa1, sgpa2, sgpa3, sgpa4;
+
+    const sgpaCalc = function (num) {
+      let totalGrade = 0;
+      let totalCredits = 0;
+
+      for (let i = 1; i <= 3; i++) {
+        const grade = parseFloat(
+          document.getElementById(`sem${num}-sub${i}-grade`).value
+        );
+        const credits = parseFloat(
+          document.getElementById(`sem${num}-sub${i}-creds`).value
+        );
+
+        totalGrade += grade * credits;
+        totalCredits += credits;
+      }
+
+      return (totalGrade / totalCredits).toFixed(2);
+    };
+    const sgpa = function () {
+      sgpa1 = parseFloat(sgpaCalc(1));
+      sgpa2 = parseFloat(sgpaCalc(2));
+      sgpa3 = parseFloat(sgpaCalc(3));
+      sgpa4 = parseFloat(sgpaCalc(4));
+
+      document.getElementById(
+        "para1"
+      ).innerHTML = `Your sgpa for semester 1 is: ${sgpa1}`;
+      document.getElementById(
+        "para2"
+      ).innerHTML = `Your sgpa for semester 2 is: ${sgpa2}`;
+      document.getElementById(
+        "para3"
+      ).innerHTML = `Your sgpa for semester 3 is: ${sgpa3}`;
+      document.getElementById(
+        "para4"
+      ).innerHTML = `Your sgpa for semester 4 is: ${sgpa4}`;
+    };
+    const cgpa = function () {
+      const avg = ((sgpa1 + sgpa2 + sgpa3 + sgpa4) / 4).toFixed(2);
+      document.getElementById("para5").innerHTML = `Your CGPA is: ${avg}`;
+    };
+  </script>
+</html>
