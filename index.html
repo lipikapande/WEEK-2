@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1>Pizza Order Form</h1>
+      <label><b>Select your pizza toppings:</b></label
+      ><br />
+      <input
+        type="checkbox"
+        name="topping"
+        value="Pepperoni"
+        data-img="img/pepperoni.jpg"
+      />
+      Pepperoni <br />
+      <input
+        type="checkbox"
+        name="topping"
+        value="Mushrooms"
+        data-img="img/mushroom.jpg"
+      />
+      Mushrooms <br />
+      <input
+        type="checkbox"
+        name="topping"
+        value="Onions"
+        data-img="img/onion.jpg"
+      />
+      Onions <br />
+      <input
+        type="checkbox"
+        name="topping"
+        value="Sausage"
+        data-img="img/sausage.jpg"
+      />
+      Sausage <br />
+      <input
+        type="checkbox"
+        name="topping"
+        value="Bacon"
+        data-img="img/bacon.jpg"
+      />
+      Bacon <br />
+      <input
+        type="checkbox"
+        name="topping"
+        value="Extra cheese"
+        data-img="img/cheese.jpg"
+      />
+      Extra Cheese <br />
+      <input
+        type="checkbox"
+        name="topping"
+        value="Black olives"
+        data-img="img/olives.jpg"
+      />
+      Black Olives <br />
+      <input
+        type="checkbox"
+        name="topping"
+        value="Green peppers"
+        data-img="img/peppers.jpg"
+      />
+      Green Peppers <br />
+      <input
+        type="checkbox"
+        name="topping"
+        value="Pineapple"
+        data-img="img/pineapple.jpg"
+      />
+      Pineapple <br />
+      <input
+        type="checkbox"
+        name="topping"
+        value="Spinach"
+        data-img="img/spinach.jpg"
+      />
+      Spinach <br />
+
+      <br />
+      <label><b>Select your pizza size:</b></label
+      ><br />
+      <input type="radio" name="size" value="Small" />
+      Small <br />
+      <input type="radio" name="size" value="Medium" />
+      Medium <br />
+      <input type="radio" name="size" value="Large" />
+      Large <br />
+      <input type="radio" name="size" value="Extra Large" />
+      Extra Large <br />
+
+      <br />
+      <button type="button" onclick="submitOrder()">Submit</button>
+
+      <hr />
+      <h3>Order Summary:</h3>
+      <p id="order-summary"></p>
+      <div id="image-container"></div>
+    </div>
+
+    <script>
+      function submitOrder() {
+        let selectedToppings = [];
+        let images = [];
+
+        document
+          .querySelectorAll('input[name="topping"]:checked')
+          .forEach((checkbox) => {
+            selectedToppings.push(checkbox.value);
+            images.push(checkbox.getAttribute("data-img"));
+          });
+
+        let selectedSize = "";
+        let selectedSizeRadio = document.querySelector(
+          'input[name="size"]:checked'
+        );
+
+        if (selectedSizeRadio) {
+          selectedSize = selectedSizeRadio.value;
+          sizeImage = selectedSizeRadio.getAttribute("data-img");
+        }
+        document.getElementById(
+          "order-summary"
+        ).innerHTML = `<b>Selected Toppings:</b> ${
+          selectedToppings.length ? selectedToppings.join(", ") : "None"
+        }<br>
+                 <b>Pizza Size:</b> ${selectedSize ? selectedSize : "None"}`;
+
+        let imageContainer = document.getElementById("image-container");
+        imageContainer.innerHTML = "";
+
+        images.forEach((imgSrc) => {
+          let img = document.createElement("img");
+          img.src = imgSrc;
+          img.alt = "Topping Image";
+          imageContainer.appendChild(img);
+        });
+      }
+    </script>
+  </body>
+</html>
